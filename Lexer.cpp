@@ -47,6 +47,7 @@ static int __Get_Tok()
 
     if (isalpha(LastChar))
     {
+        IdentifierStr = LastChar;
         while (isalnum(LastChar = getchar()))
         {
             IdentifierStr += LastChar;
