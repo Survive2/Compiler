@@ -6,4 +6,4 @@ Because I hope I can help those beginners who want to learn how to write a Compi
 
 And github is for code,read My Blog for the detail: https://survive2.github.io/
 
-** I am not a Pro **,I am more of a beginner, so I hope I can learn from it,too.
+**I am not a Pro**,I am more of a beginner, so I hope I can learn from it,too.
