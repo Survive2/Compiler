@@ -12,6 +12,7 @@ by h1J4cker
 #include <stdio.h>
 #include <iostream>
 #include <string.h>
+#include<typeinfo>
 
 enum Tokenizer
 {
@@ -22,8 +23,9 @@ enum Tokenizer
     tok_number = -5
 };
 static std::string IdentifierStr;
-static double NumVal;
-
+static double __Double_NumVal;
+static int __Int_NumVal;
+static int __tmp;
 
 /*
 
@@ -31,14 +33,11 @@ Day_1 Info:
 
 Content: A Simple Lexer is Done!
 
-start at 20:30
-end at 21:30
-
 */
 
 static int __Get_Tok()
 {
-    static int LastChar = " ";
+    static int LastChar = ' ';
 
     while (isspace(LastChar))
     {
@@ -47,7 +46,6 @@ static int __Get_Tok()
 
     if (isalpha(LastChar))
     {
-        IdentifierStr = LastChar;
         while (isalnum(LastChar = getchar()))
         {
             IdentifierStr += LastChar;
@@ -67,7 +65,7 @@ static int __Get_Tok()
         }
     }
 
-    if (isdigit(LastChar) || LastChar == ".")
+    if (isdigit(LastChar) || LastChar == '.')
     {
 
         std::string NumStr;
@@ -76,13 +74,19 @@ static int __Get_Tok()
         {
             NumStr += LastChar;
             LastChar = getchar();
-        } while (isdigit(LastChar) || LastChar == ".");
+        } while (isdigit(LastChar) || LastChar == '.');
 
-        NumVal = strtod(NumStr.c_str(), 0);
+        __tmp = strtod(NumStr.c_str(), 0);
+        if(typeid(__tmp).name()=="int"){
+            __Int_NumVal=__tmp;
+        }
+        else{
+            __Double_NumVal==__tmp;
+        }
         return tok_number;
     }
 
-    if (LastChar == "#")
+    if (LastChar == '#')
     {
         do
         {
